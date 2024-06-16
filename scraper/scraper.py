@@ -8,8 +8,8 @@ matchesUrl = 'https://vlr.gg/matches/results'
 # Send a GET request to the URL
 response = requests.get(matchesUrl)
 
-soup = BeautifulSoup(response.text, 'html.parser')
-matchLinks = soup.find_all('a')
+soup = BeautifulSoup(response.text, 'lxml')
+for link in soup.find_all('a'):
+    print(link.get('href'))
 
-print(matchLinks)
 #print(soup.prettify())
